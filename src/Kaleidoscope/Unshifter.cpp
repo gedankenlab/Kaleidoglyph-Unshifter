@@ -16,6 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include <Kaleidoscope-Unshifter.h>
+#include <kaleidoscope/hid.h>
 
-#include <Kaleidoscope.h>
+#ifdef ARDUINO_VIRTUAL
+#define debug_print(...) printf(__VA_ARGS__)
+#else
+#define debug_print(...)
+#endif
