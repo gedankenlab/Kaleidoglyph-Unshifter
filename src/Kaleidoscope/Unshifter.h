@@ -19,3 +19,19 @@
 #pragma once
 
 #include <Kaleidoscope.h>
+
+
+namespace kaleidoscope {
+
+class Unshifter : public KaleidoscopePlugin {
+
+ public:
+  Unshifter(void);
+
+  void begin(void) final;
+
+ private:
+  
+}
+
+}

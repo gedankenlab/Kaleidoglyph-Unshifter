@@ -24,3 +24,12 @@
 #else
 #define debug_print(...)
 #endif
+
+
+namespace kaleidoscope {
+
+// constructor
+Unshifter::Unshifter(void) {
+}
+
+}
