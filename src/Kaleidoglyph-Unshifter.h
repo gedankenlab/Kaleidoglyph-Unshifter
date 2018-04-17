@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
- * Kaleidoscope-Unshifter -- Arbitrarily rearrange symbols on the keyboard.
- * Copyright (C) 2017  Michael Richters
+ * Kaleidoscope-Qukeys -- Assign two keycodes to a single key
+ * Copyright (C) 2017-2018  Michael Richters
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,20 +18,4 @@
 
 #pragma once
 
-#include <Kaleidoscope.h>
-
-
-namespace kaleidoscope {
-
-class Unshifter : public KaleidoscopePlugin {
-
- public:
-  Unshifter(void);
-
-  void begin(void) final;
-
- private:
-  
-}
-
-}
+#include "unshifter/Unshifter.h"
