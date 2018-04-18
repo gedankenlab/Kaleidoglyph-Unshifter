@@ -41,7 +41,7 @@ class UnshifterKey {
                 type_id_ << 8   );
   }
 
-  static bool testType(Key key) {
+  static bool verify(Key key) {
     return ((uint16_t(key) >> 8) == unshifter_type_id);
   }
 };

@@ -22,7 +22,7 @@ namespace unshifter {
 // This is our best guess as to whether the pressed key was *intended* to be interpreted
 // as an explicit `shift` key by the user
 bool isRealShift(Key key) {
-  if (KeyboardKey::testType(key)) {
+  if (KeyboardKey::verify(key)) {
 
     KeyboardKey keyboard_key{key};
 
@@ -51,7 +51,7 @@ bool Plugin::keyswitchEventHook(KeyswitchEvent& event,
         event.key = unptr->lower;
       } else {
         event.key = unptr->upper;
-        if (KeyboardKey::testType(event.key)) {
+        if (KeyboardKey::verify(event.key)) {
           KeyboardKey keyboard_key{event.key};
           if (!(keyboard_key.modifiers() & keyboard_key.mods_mask_shift))
             reverse_shift_state_ = true;
@@ -95,7 +95,7 @@ void Plugin::postReportHook(KeyswitchEvent event) {
 // corresponding Unkey object.
 inline
 const Unkey* Plugin::lookupUnkey(Key key) {
-  if (UnshifterKey::testType(key)) {
+  if (UnshifterKey::verify(key)) {
     byte unkey_index = UnshifterKey(key).index();
     if (unkey_index < unkey_count_)
       return &(unkeys_[unkey_index]);
