@@ -4,6 +4,7 @@
 
 #include KALEIDOSCOPE_HARDWARE_H
 #include KALEIDOSCOPE_KEYADDR_H
+#include <kaleidoscope/Key/Keyboard.h>
 #include <kaleidoscope/Key.h>
 #include <kaleidoscope/Plugin.h>
 #include <kaleidoscope/Keymap.h>
