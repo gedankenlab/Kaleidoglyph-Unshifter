@@ -68,8 +68,8 @@ bool Plugin::keyswitchEventHook(KeyswitchEvent& event,
 bool Plugin::preReportHook(hid::keyboard::Report& keyboard_report) {
   if (reverse_shift_state_) {
     // release both shifts in report
-    keyboard_report.remove(cKey::LeftShift);
-    keyboard_report.remove(cKey::RightShift);
+    keyboard_report.remove(cKeyboardKey::LeftShift);
+    keyboard_report.remove(cKeyboardKey::RightShift);
     reverse_shift_state_ = false;
   }
   return true;
