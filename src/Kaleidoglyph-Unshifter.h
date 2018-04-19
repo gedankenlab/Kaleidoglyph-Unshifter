@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * Kaleidoscope-Qukeys -- Assign two keycodes to a single key
+ * Kaleidoglyph-Qukeys -- Assign two keycodes to a single key
  * Copyright (C) 2017-2018  Michael Richters
  *
  * This program is free software: you can redistribute it and/or modify

@@ -5,18 +5,18 @@
 
 #include <Arduino.h>
 
-#include KALEIDOSCOPE_HARDWARE_H
-#include KALEIDOSCOPE_KEYADDR_H
-#include <kaleidoscope/Key.h>
-#include <kaleidoscope/Plugin.h>
-#include <kaleidoscope/KeyswitchState.h>
-#include <kaleidoscope/KeyArray.h>
-#include <kaleidoscope/KeyswitchEvent.h>
-#include <kaleidoscope/KeyswitchState.h>
-#include <kaleidoscope/hid/Report.h>
+#include KALEIDOGLYPH_HARDWARE_H
+#include KALEIDOGLYPH_KEYADDR_H
+#include <kaleidoglyph/Key.h>
+#include <kaleidoglyph/Plugin.h>
+#include <kaleidoglyph/KeyswitchState.h>
+#include <kaleidoglyph/KeyArray.h>
+#include <kaleidoglyph/KeyswitchEvent.h>
+#include <kaleidoglyph/KeyswitchState.h>
+#include <kaleidoglyph/hid/Report.h>
 
 
-namespace kaleidoscope {
+namespace kaleidoglyph {
 namespace unshifter {
 
 // This is our best guess as to whether the pressed key was *intended* to be interpreted
@@ -38,7 +38,7 @@ bool isRealShift(Key key) {
 
 // Event handler
 bool Plugin::keyswitchEventHook(KeyswitchEvent& event,
-                                kaleidoscope::Plugin*& caller) {
+                                kaleidoglyph::Plugin*& caller) {
   // If Unkeys has already processed this event:
   if (checkCaller(caller))
     return true;
@@ -104,4 +104,4 @@ const Unkey* Plugin::lookupUnkey(Key key) {
 }
 
 } // namespace unshifter {
-} // namespace kaleidoscope {
+} // namespace kaleidoglyph {

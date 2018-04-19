@@ -1,5 +1,5 @@
-# This stub makefile for a Kaleidoscope plugin pulls in 
-# all targets from the Kaleidoscope-Plugin library
+# This stub makefile for a Kaleidoglyph plugin pulls in 
+# all targets from the Kaleidoglyph-Plugin library
 
 UNAME_S := $(shell uname -s)
 
@@ -10,5 +10,5 @@ SKETCHBOOK_DIR ?= $(HOME)/Arduino
 endif
 
 BOARD_HARDWARE_PATH ?= $(SKETCHBOOK_DIR)/hardware
-KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR ?= keyboardio/avr/build-tools/makefiles/
-include $(BOARD_HARDWARE_PATH)/$(KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR)/rules.mk
+KALEIDOGLYPH_PLUGIN_MAKEFILE_DIR ?= keyboardio/avr/build-tools/makefiles/
+include $(BOARD_HARDWARE_PATH)/$(KALEIDOGLYPH_PLUGIN_MAKEFILE_DIR)/rules.mk

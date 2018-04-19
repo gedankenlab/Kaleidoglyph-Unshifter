@@ -4,11 +4,11 @@
 
 #include <Arduino.h>
 
-#include "kaleidoscope/Key.h"
+#include "kaleidoglyph/Key.h"
 #include <assert.h>
 
 
-namespace kaleidoscope {
+namespace kaleidoglyph {
 
 __attribute__((weak)) extern
 constexpr byte unshifter_type_id { 0b01000001 };
@@ -46,4 +46,4 @@ class UnshifterKey {
   }
 };
 
-} // namespace kaleidoscope {
+} // namespace kaleidoglyph {

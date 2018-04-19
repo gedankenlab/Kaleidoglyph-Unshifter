@@ -2,18 +2,18 @@
 
 #include <Arduino.h>
 
-#include KALEIDOSCOPE_HARDWARE_H
-#include KALEIDOSCOPE_KEYADDR_H
-#include <kaleidoscope/Key.h>
-#include <kaleidoscope/Plugin.h>
-#include <kaleidoscope/Keymap.h>
-#include <kaleidoscope/Controller.h>
-#include <kaleidoscope/cKey.h>
-#include <kaleidoscope/hid/Report.h>
+#include KALEIDOGLYPH_HARDWARE_H
+#include KALEIDOGLYPH_KEYADDR_H
+#include <kaleidoglyph/Key.h>
+#include <kaleidoglyph/Plugin.h>
+#include <kaleidoglyph/Keymap.h>
+#include <kaleidoglyph/Controller.h>
+#include <kaleidoglyph/cKey.h>
+#include <kaleidoglyph/hid/Report.h>
 
 #include "unshifter/UnshifterKey.h"
 
-namespace kaleidoscope {
+namespace kaleidoglyph {
 namespace unshifter {
 
 
@@ -27,14 +27,14 @@ struct Unkey {
 };
 
 
-class Plugin : public kaleidoscope::Plugin {
+class Plugin : public kaleidoglyph::Plugin {
 
  public:
   Plugin(const Unkey* const unkeys, const byte unkey_count)
       : unkeys_(unkeys), unkey_count_(unkey_count) {}
 
   bool keyswitchEventHook(KeyswitchEvent& event,
-                          kaleidoscope::Plugin*& caller) override;
+                          kaleidoglyph::Plugin*& caller) override;
 
   bool preReportHook(hid::keyboard::Report& keyboard_report) override;
 
@@ -53,4 +53,4 @@ class Plugin : public kaleidoscope::Plugin {
 };
 
 } // namespace qukeys {
-} // namespace kaleidoscope {
+} // namespace kaleidoglyph {
