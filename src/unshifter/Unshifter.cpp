@@ -39,10 +39,6 @@ bool isRealShift(Key key) {
 // Event handler
 bool Plugin::keyswitchEventHook(KeyswitchEvent& event,
                                 kaleidoglyph::Plugin*& caller) {
-  // If Unkeys has already processed this event:
-  if (checkCaller(caller))
-    return true;
-
   // If the key toggled on, set the value based on the "true" shift state, and if
   // necessary set the shift-reverse flag
   if (event.state.toggledOn()) {
