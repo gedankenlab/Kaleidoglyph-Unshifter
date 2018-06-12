@@ -9,10 +9,10 @@
 #include KALEIDOGLYPH_KEYADDR_H
 #include <kaleidoglyph/Key.h>
 #include <kaleidoglyph/Plugin.h>
-#include <kaleidoglyph/KeyswitchState.h>
+#include <kaleidoglyph/KeyState.h>
 #include <kaleidoglyph/KeyArray.h>
 #include <kaleidoglyph/KeyswitchEvent.h>
-#include <kaleidoglyph/KeyswitchState.h>
+#include <kaleidoglyph/KeyState.h>
 #include <kaleidoglyph/hid/Report.h>
 
 
