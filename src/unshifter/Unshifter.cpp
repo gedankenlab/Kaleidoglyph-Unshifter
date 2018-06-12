@@ -11,7 +11,7 @@
 #include <kaleidoglyph/Plugin.h>
 #include <kaleidoglyph/KeyState.h>
 #include <kaleidoglyph/KeyArray.h>
-#include <kaleidoglyph/KeyswitchEvent.h>
+#include <kaleidoglyph/KeyEvent.h>
 #include <kaleidoglyph/KeyState.h>
 #include <kaleidoglyph/hid/Report.h>
 
@@ -37,7 +37,7 @@ bool isRealShift(Key key) {
 }
 
 // Event handler
-bool Plugin::keyswitchEventHook(KeyswitchEvent& event,
+bool Plugin::keyswitchEventHook(KeyEvent& event,
                                 kaleidoglyph::Plugin*& caller) {
   // If Unkeys has already processed this event:
   if (checkCaller(caller))
@@ -77,7 +77,7 @@ bool Plugin::preReportHook(hid::keyboard::Report& keyboard_report) {
 
 
 // Update the count of "true" shift keys held
-void Plugin::postReportHook(KeyswitchEvent event) {
+void Plugin::postReportHook(KeyEvent event) {
   // I'm a bit concerned about the possibility of the count getting out of sync here, but
   // I'm going to trust it for now, and see how it plays out. If it doesn't work, we can
   // drop this hook function and just iterate through the array in the preReportHook to
