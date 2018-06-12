@@ -33,12 +33,12 @@ class Plugin : public kaleidoglyph::Plugin {
   Plugin(const Unkey* const unkeys, const byte unkey_count)
       : unkeys_(unkeys), unkey_count_(unkey_count) {}
 
-  bool keyswitchEventHook(KeyswitchEvent& event,
+  bool keyswitchEventHook(KeyEvent& event,
                           kaleidoglyph::Plugin*& caller) override;
 
   bool preReportHook(hid::keyboard::Report& keyboard_report) override;
 
-  void postReportHook(KeyswitchEvent event) override;
+  void postReportHook(KeyEvent event) override;
 
  private:
   // An array of Unkey objects
