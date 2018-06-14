@@ -37,11 +37,7 @@ bool isRealShift(Key key) {
 }
 
 // Event handler
-bool Plugin::keyswitchEventHook(KeyEvent& event,
-                                kaleidoglyph::Plugin*& caller) {
-  // If Unkeys has already processed this event:
-  if (checkCaller(caller))
-    return true;
+EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
 
   // If the key toggled on, set the value based on the "true" shift state, and if
   // necessary set the shift-reverse flag
@@ -60,12 +56,12 @@ bool Plugin::keyswitchEventHook(KeyEvent& event,
     }
   }
 
-  return true;
+  return EventHandlerResult::proceed;
 }
 
 
 // Check timeouts and send necessary key events
-bool Plugin::preReportHook(hid::keyboard::Report& keyboard_report) {
+bool Plugin::beforeKeyboardReport(hid::keyboard::Report& keyboard_report) {
   if (reverse_shift_state_) {
     // release both shifts in report
     keyboard_report.remove(cKeyboardKey::LeftShift);
@@ -77,7 +73,7 @@ bool Plugin::preReportHook(hid::keyboard::Report& keyboard_report) {
 
 
 // Update the count of "true" shift keys held
-void Plugin::postReportHook(KeyEvent event) {
+void Plugin::afterKeyboardReport(KeyEvent event) {
   // I'm a bit concerned about the possibility of the count getting out of sync here, but
   // I'm going to trust it for now, and see how it plays out. If it doesn't work, we can
   // drop this hook function and just iterate through the array in the preReportHook to

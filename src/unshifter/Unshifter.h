@@ -9,6 +9,7 @@
 #include <kaleidoglyph/Keymap.h>
 #include <kaleidoglyph/Controller.h>
 #include <kaleidoglyph/cKey.h>
+#include <kaleidoglyph/EventHanderResult.h>
 #include <kaleidoglyph/hid/Report.h>
 
 #include "unshifter/UnshifterKey.h"
@@ -33,12 +34,11 @@ class Plugin : public kaleidoglyph::Plugin {
   Plugin(const Unkey* const unkeys, const byte unkey_count)
       : unkeys_(unkeys), unkey_count_(unkey_count) {}
 
-  bool keyswitchEventHook(KeyEvent& event,
-                          kaleidoglyph::Plugin*& caller) override;
+  EventHandlerResult onKeyEvent(KeyEvent& event);
 
-  bool preReportHook(hid::keyboard::Report& keyboard_report) override;
+  bool beforeKeyboardReport(hid::keyboard::Report& keyboard_report);
 
-  void postReportHook(KeyEvent event) override;
+  void afterKeyboardReport(KeyEvent event);
 
  private:
   // An array of Unkey objects
