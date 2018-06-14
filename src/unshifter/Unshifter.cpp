@@ -61,7 +61,7 @@ EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
 
 
 // Check timeouts and send necessary key events
-bool Plugin::beforeKeyboardReport(hid::keyboard::Report& keyboard_report) {
+bool Plugin::preKeyboardReport(hid::keyboard::Report& keyboard_report) {
   if (reverse_shift_state_) {
     // release both shifts in report
     keyboard_report.remove(cKeyboardKey::LeftShift);
@@ -73,7 +73,7 @@ bool Plugin::beforeKeyboardReport(hid::keyboard::Report& keyboard_report) {
 
 
 // Update the count of "true" shift keys held
-void Plugin::afterKeyboardReport(KeyEvent event) {
+void Plugin::postKeyboardReport(KeyEvent event) {
   // I'm a bit concerned about the possibility of the count getting out of sync here, but
   // I'm going to trust it for now, and see how it plays out. If it doesn't work, we can
   // drop this hook function and just iterate through the array in the preReportHook to

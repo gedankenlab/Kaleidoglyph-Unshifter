@@ -36,9 +36,9 @@ class Plugin : public kaleidoglyph::Plugin {
 
   EventHandlerResult onKeyEvent(KeyEvent& event);
 
-  bool beforeKeyboardReport(hid::keyboard::Report& keyboard_report);
+  bool preKeyboardReport(hid::keyboard::Report& keyboard_report);
 
-  void afterKeyboardReport(KeyEvent event);
+  void postKeyboardReport(KeyEvent event);
 
  private:
   // An array of Unkey objects
