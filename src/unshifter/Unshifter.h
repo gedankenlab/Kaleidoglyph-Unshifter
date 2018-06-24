@@ -9,7 +9,7 @@
 #include <kaleidoglyph/Keymap.h>
 #include <kaleidoglyph/Controller.h>
 #include <kaleidoglyph/cKey.h>
-#include <kaleidoglyph/EventHanderResult.h>
+#include <kaleidoglyph/EventHandlerResult.h>
 #include <kaleidoglyph/hid/Report.h>
 
 #include "unshifter/UnshifterKey.h"
