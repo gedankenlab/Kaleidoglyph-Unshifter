@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * Kaleidoglyph-Qukeys -- Assign two keycodes to a single key
+ * Kaleidoglyph-Unshifter -- Freely assign shifted & unshifted symbols
  * Copyright (C) 2017-2018  Michael Richters
  *
  * This program is free software: you can redistribute it and/or modify

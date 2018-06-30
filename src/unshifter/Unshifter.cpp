@@ -5,14 +5,12 @@
 
 #include <Arduino.h>
 
-#include KALEIDOGLYPH_HARDWARE_H
-#include KALEIDOGLYPH_KEYADDR_H
 #include <kaleidoglyph/Key.h>
-#include <kaleidoglyph/Plugin.h>
-#include <kaleidoglyph/KeyState.h>
+#include <kaleidoglyph/KeyAddr.h>
 #include <kaleidoglyph/KeyArray.h>
 #include <kaleidoglyph/KeyEvent.h>
 #include <kaleidoglyph/KeyState.h>
+#include <kaleidoglyph/Plugin.h>
 #include <kaleidoglyph/hid/Report.h>
 
 
