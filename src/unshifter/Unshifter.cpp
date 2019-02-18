@@ -42,9 +42,9 @@ EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
   if (event.state.toggledOn()) {
     if (const Unkey* unptr = lookupUnkey(event.key)) {
       if (shift_held_count_ == 0) {
-        event.key = unptr->lower;
+        event.key = unptr->lower();
       } else {
-        event.key = unptr->upper;
+        event.key = unptr->upper();
         if (KeyboardKey::verify(event.key)) {
           KeyboardKey keyboard_key{event.key};
           if (!(keyboard_key.modifiers() & keyboard_key.mods_mask_shift))

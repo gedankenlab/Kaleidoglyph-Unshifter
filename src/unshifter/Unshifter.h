@@ -20,11 +20,19 @@ namespace unshifter {
 
 // Unkey structure
 struct Unkey {
-  Key  lower;
-  Key  upper;
+  const Key  lower_;
+  const Key  upper_;
 
-  Unkey(Key base, Key alt) : lower(base),
-                             upper(alt)   {}
+  constexpr
+  Unkey(const Key base, const Key alt) : lower_(base),
+                                         upper_(alt)   {}
+
+  const Key lower() const {
+    return getProgmemKey(lower_);
+  }
+  const Key upper() const {
+    return getProgmemKey(upper_);
+  }
 };
 
 
@@ -48,7 +56,7 @@ class Plugin : public kaleidoglyph::Plugin {
   byte shift_held_count_{0};
   bool reverse_shift_state_{false};
 
-  const Unkey* lookupUnkey(Key key);
+  const Unkey* lookupUnkey(const Key key);
 
 };
 
