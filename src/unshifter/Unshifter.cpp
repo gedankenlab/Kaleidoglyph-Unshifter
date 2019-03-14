@@ -11,7 +11,7 @@
 #include <kaleidoglyph/KeyEvent.h>
 #include <kaleidoglyph/KeyState.h>
 #include <kaleidoglyph/Plugin.h>
-#include <kaleidoglyph/hid/Report.h>
+#include <kaleidoglyph/hid/keyboard.h>
 
 
 namespace kaleidoglyph {
@@ -62,8 +62,8 @@ EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
 bool Plugin::preKeyboardReport(hid::keyboard::Report& keyboard_report) {
   if (reverse_shift_state_) {
     // release both shifts in report
-    keyboard_report.remove(cKeyboardKey::LeftShift);
-    keyboard_report.remove(cKeyboardKey::RightShift);
+    keyboard_report.removeModifiers(cKeyboardKey::LeftShift.keycodeModifier() |
+                                    cKeyboardKey::RightShift.keycodeModifier());
     reverse_shift_state_ = false;
   }
   return true;

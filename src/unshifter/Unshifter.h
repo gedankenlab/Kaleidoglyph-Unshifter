@@ -2,15 +2,14 @@
 
 #include <Arduino.h>
 
-#include KALEIDOGLYPH_HARDWARE_H
-#include KALEIDOGLYPH_KEYADDR_H
+#include <kaleidoglyph/KeyAddr.h>
 #include <kaleidoglyph/Key.h>
 #include <kaleidoglyph/Plugin.h>
 #include <kaleidoglyph/Keymap.h>
 #include <kaleidoglyph/Controller.h>
 #include <kaleidoglyph/cKey.h>
 #include <kaleidoglyph/EventHandlerResult.h>
-#include <kaleidoglyph/hid/Report.h>
+#include <kaleidoglyph/hid/keyboard.h>
 
 #include "unshifter/UnshifterKey.h"
 
