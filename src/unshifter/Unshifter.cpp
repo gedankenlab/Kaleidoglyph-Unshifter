@@ -41,15 +41,37 @@ EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
   // necessary set the shift-reverse flag
   if (event.state.toggledOn()) {
     if (const Unkey* unptr = lookupUnkey(event.key)) {
+      // An Unkey was just pressed
       if (shift_held_count_ == 0) {
         event.key = unptr->lower();
       } else {
         event.key = unptr->upper();
         if (KeyboardKey::verifyType(event.key)) {
           KeyboardKey keyboard_key{event.key};
-          if (!(keyboard_key.modifiers() & keyboard_key.mods_mask_shift))
+          // If there's no shift modifier attached to this key, record that the applied
+          // shift from real modifiers should be removed before sending the report. Also,
+          // record which key is responsible for undoing the shift.
+          if (!(keyboard_key.modifiers() & KeyboardKey::mods_mask_shift)) {
+            unkey_addr_ = event.addr;
             reverse_shift_state_ = true;
+          }
         }
+      }
+    } else {
+      // Some other key was pressed, possibly while an Unkey is being held. We assume the
+      // OS will mask the Unkey for us, so we don't bother asking the controller to do
+      // it. But since it's masked, we unset its other state. We could first test to see
+      // if there's actually an Unkey being held (i.e. unkey_addr_.isValid()), but there's
+      // almost nothing to be gained.
+      unkey_addr_ = cKeyAddr::invalid;
+      reverse_shift_state_ = false;
+    }
+  } else {
+    if (unkey_addr_.isValid()) {
+      if (event.addr == unkey_addr_) {
+        // The current UnKey has been released, so we clear it.
+        unkey_addr_ = cKeyAddr::invalid;
+        reverse_shift_state_ = false;
       }
     }
   }
@@ -64,13 +86,12 @@ bool Plugin::preKeyboardReport(hid::keyboard::Report& keyboard_report) {
     // release both shifts in report
     keyboard_report.removeModifiers(cKeyboardKey::LeftShift.keycodeModifier() |
                                     cKeyboardKey::RightShift.keycodeModifier());
-    reverse_shift_state_ = false;
   }
   return true;
 }
 
 
-// Update the count of "true" shift keys held
+// Update the count of "real" shift keys held
 void Plugin::postKeyboardReport(KeyEvent event) {
   // I'm a bit concerned about the possibility of the count getting out of sync here, but
   // I'm going to trust it for now, and see how it plays out. If it doesn't work, we can

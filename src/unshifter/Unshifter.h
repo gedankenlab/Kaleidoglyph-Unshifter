@@ -54,6 +54,7 @@ class Plugin : public kaleidoglyph::Plugin {
 
   byte shift_held_count_{0};
   bool reverse_shift_state_{false};
+  KeyAddr unkey_addr_{cKeyAddr::invalid};
 
   const Unkey* lookupUnkey(const Key key);
 
