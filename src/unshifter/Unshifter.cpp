@@ -54,6 +54,8 @@ EventHandlerResult Plugin::onKeyEvent(KeyEvent& event) {
           if (!(keyboard_key.modifiers() & KeyboardKey::mods_mask_shift)) {
             unkey_addr_ = event.addr;
             reverse_shift_state_ = true;
+          } else {
+            reverse_shift_state_ = false;
           }
         }
       }
