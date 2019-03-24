@@ -38,8 +38,9 @@ struct Unkey {
 class Plugin : public kaleidoglyph::Plugin {
 
  public:
-  Plugin(const Unkey* const unkeys, const byte unkey_count)
-      : unkeys_(unkeys), unkey_count_(unkey_count) {}
+  template<byte _unkey_count>
+  Plugin(const Unkey (&unkeys)[_unkey_count])
+      : unkeys_(unkeys), unkey_count_(_unkey_count) {}
 
   EventHandlerResult onKeyEvent(KeyEvent& event);
 
