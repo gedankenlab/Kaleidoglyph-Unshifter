@@ -35,7 +35,7 @@ struct Unkey {
 };
 
 
-class Plugin : public kaleidoglyph::Plugin {
+class Plugin : public EventHandler {
 
  public:
   template<byte _unkey_count>
